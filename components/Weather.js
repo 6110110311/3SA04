@@ -26,7 +26,7 @@ export default function Weather(props) {
         }
     }, [props.zipCode])
 
-    
+
     return (
         <ImageBackground source={require('../bg.jpg')} style={styles.backdrop}>
             <View style={styles.background}>
@@ -58,6 +58,6 @@ const styles = StyleSheet.create({
         top: 20,
         opacity: 0.65,
         width: '100%',
-        height: '35%'
+        height: '40%'
     }
 })
