@@ -11,6 +11,10 @@ const availableZipItems = [
     { place: 'Chonburi', code: '20000' },
 ]
 
+const con_me = [
+    { name_me: 'Hatyai', Tel: '0950853773' },
+]
+
 const ZipItem = ({place, code, navigation}) => (
     <TouchableHighlight onPress={() => (
         navigation.navigate('Weather', {zipCode: code})
@@ -21,14 +25,36 @@ const ZipItem = ({place, code, navigation}) => (
         </View>
     </TouchableHighlight>
 )
+
+const Contact = ({name_me, Tel, navigation}) => (
+    <TouchableHighlight onPress={() => (
+        navigation.navigate('contact')
+    )}>
+        <View style={styles.conItem}>
+            <Text>{name_me}</Text>
+            <Text>{Tel}</Text>
+        </View>
+    </TouchableHighlight>
+)
+
 export default function zipCodeScreen() {
     const navigation = useNavigation()
     return (
-        <FlatList
-            data = {availableZipItems} 
-            keyExtractor = {item => item.code} 
-            renderItem = {({item}) => <ZipItem {...item} navigation={navigation}/>}
-        />
+        <View>
+            <FlatList
+                data = {availableZipItems} 
+                keyExtractor = {item => item.code} 
+                renderItem = {({item}) => <ZipItem {...item} navigation={navigation}/>}
+            />
+            <View>
+            <FlatList
+                data = {con_me} 
+                keyExtractor = {item => item.code} 
+                renderItem = {({item}) => <ZipItem {...item} navigation={navigation}/>}
+            />
+            </View>
+        </View>
+        
     )
 }
 
@@ -44,4 +70,7 @@ const styles = StyleSheet.create({
     zipCode: {
         flex: 1,
     },
+    conItem: {
+        flex : 1,
+    }
 })

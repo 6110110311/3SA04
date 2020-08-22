@@ -16,36 +16,36 @@ export default function Forecast(props) {
 const styles = StyleSheet.create ({
     mainText: {
         fontSize: 20,
-        color: 'red',
+        color: 'white',
         paddingTop: 10,
         textAlign: 'center',
     },
     descriptionText: {
         fontSize: 20,
-        color: 'red',
+        color: 'white',
         paddingTop: 10,
         textAlign: 'center',
         
     },
     tempText: {
-        color: 'red',
+        color: 'white',
         textAlign: 'center',
         fontSize: 30,
     },
     celsiusText: {
         fontSize: 15,
         textAlign: 'center',
-        color: 'red',
+        color: 'white',
     },
     name: {
         fontSize: 45,
         textAlign: 'center',
-        color: 'red',
+        color: 'white',
     },
     littletemp: {
         fontSize: 15,
         textAlign: 'center',
-        color: 'red',
+        color: 'white',
     }
     
 })

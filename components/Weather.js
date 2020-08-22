@@ -33,14 +33,31 @@ export default function Weather(props) {
         }
     }, [props.zipCode])
 
+    let bg_w = '';
     if(props.zipCode == "90110"){
         console.log("Hatyai");
-        
+        bg_w = require('../img/hatyai.jpg');
+    }
+    else if(props.zipCode == "92000"){
+        console.log("Hatyai");
+        bg_w = require('../img/trang.jpg');
+    }
+    else if(props.zipCode == "50000"){
+        console.log("Hatyai");
+        bg_w = require('../img/chiangmai.jpg');
+    }
+    else if(props.zipCode == "40000"){
+        console.log("Hatyai");
+        bg_w = require('../img/khonkean.jpg');
+    }
+    else if(props.zipCode == "20000"){
+        console.log("Hatyai");
+        bg_w = require('../img/chonburi.jpg');
     }
        
 
     return (
-        <ImageBackground source={require('../bg.jpg')} style={styles.backdrop}>
+        <ImageBackground source={bg_w} style={styles.backdrop}>
             <View style={styles.background}>
                 <Text style={styles.zipCodeText}>Zip code is {props.zipCode}</Text>
                 <Forecast {...forecastInfo}/>
@@ -59,8 +76,8 @@ const styles = StyleSheet.create({
     },
     zipCodeText: {
         paddingTop: 20,
-        fontSize: 10,
-        color: 'red',
+        fontSize: 15,
+        color: 'white',
         textAlign: 'center'
     },
     background: {
@@ -70,6 +87,6 @@ const styles = StyleSheet.create({
         top: 20,
         opacity: 0.65,
         width: '100%',
-        height: '40%'
+        height: '45%'
     }
 })
