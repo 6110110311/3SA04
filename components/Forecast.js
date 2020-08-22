@@ -11,8 +11,8 @@ export default function Forecast(props) {
                 padding: 30,
                 }}>
                 <Text style={{paddingRight: 160}}></Text>
-                <Text style={styles.tempText}>{props.temp}</Text>
-                <Text style={styles.celsiusText}> °C</Text>
+                <Text style={styles.tempText}>{props.temp} °C</Text>
+                {/* <Text style={styles.celsiusText}> °C</Text> */}
             </View>
         </View>
     )
@@ -34,11 +34,12 @@ const styles = StyleSheet.create ({
     },
     tempText: {
         color: 'red',
-        fontSize: 50,
+        textAlign: 'center',
+        fontSize: 30,
     },
     celsiusText: {
         fontSize: 15,
-        textAlignVertical: 'center',
+        textAlign: 'center',
         color: 'white',
     },
 })
