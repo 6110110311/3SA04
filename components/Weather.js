@@ -6,7 +6,10 @@ export default function Weather(props) {
     const [forecastInfo, setForecastInfo] = useState({
         main: 'main',
         description: 'description',
-        temp: 0
+        temp: 0,
+        name: 'name',
+        temp_max: 'Max',
+        temp_min: 'Min'
     })
 
     useEffect(() => {
@@ -18,7 +21,11 @@ export default function Weather(props) {
                 setForecastInfo({
                     main: json.weather[0].main,
                     description: json.weather[0].description,
+                    name: json.name,
+                    temp_max: json.main.temp_max,
+                    temp_min: json.main.temp_min,
                     temp: json.main.temp});
+
                 })
             .catch((error) => {
                 console.warn(error);
@@ -26,6 +33,11 @@ export default function Weather(props) {
         }
     }, [props.zipCode])
 
+    if(props.zipCode == "90110"){
+        console.log("Hatyai");
+        
+    }
+       
 
     return (
         <ImageBackground source={require('../bg.jpg')} style={styles.backdrop}>
@@ -47,8 +59,8 @@ const styles = StyleSheet.create({
     },
     zipCodeText: {
         paddingTop: 20,
-        fontSize: 30,
-        color: 'white',
+        fontSize: 10,
+        color: 'red',
         textAlign: 'center'
     },
     background: {
