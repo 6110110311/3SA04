@@ -6,11 +6,16 @@ import { useNavigation } from '@react-navigation/native'
 const supportedURL = "https://google.com";
 
 const availableZipItems = [
-    { place: 'Hatyai', code: '90110', pic: require("../img/hatyai.jpg") },
+    { place: 'Songkhla', code: '90110', pic: require("../img/hatyai.jpg") },
     { place: 'Trang', code: '92000', pic: require("../img/trang.jpg") },
     { place: 'Chiangmai', code: '50000', pic: require("../img/chiangmai.jpg") },
     { place: 'Khonkaen', code: '40000', pic: require("../img/khonkean.jpg") },
     { place: 'Chonburi', code: '20000', pic: require("../img/chonburi.jpg") },
+    { place: 'Satun', code: '91000', pic: require("../img/satun.jpg") },
+    { place: 'Yala', code: '95000', pic: require("../img/yala.jpg") },
+    { place: 'Krabi', code: '81000', pic: require("../img/krabi.jpg") },
+    { place: 'Phuket', code: '83000', pic: require("../img/phuket.jpg") },
+    { place: 'Rayong', code: '21000', pic: require("../img/rayong.jpg") },
 ]
 
 const Contact_me = (navigation) =>{
@@ -37,7 +42,8 @@ export default function zipCodeScreen() {
             <FlatList
                 data = {availableZipItems} 
                 keyExtractor = {item => item.code} 
-                renderItem = {({item}) => <ZipItem {...item} navigation={navigation}/>}
+                renderItem = {({item}) => <ZipItem {...item} navigation={navigation} 
+                numColumns = {3}/>}
             />
             <View style={styles.buttonContainer}>
                 <Button title = "Contact Me" color = "orange" onPress = {() => Linking.openURL("https://github.com/6110110311/3SA04")}></Button>
