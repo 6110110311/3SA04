@@ -1,38 +1,31 @@
 import React from 'react'
-import { FlatList, View , Text , StyleSheet } from 'react-native'
+import { FlatList, View , Text , StyleSheet, Button, ImageBackground, Linking } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 
+const supportedURL = "https://google.com";
+
 const availableZipItems = [
-    { place: 'Hatyai', code: '90110' },
-    { place: 'Trang', code: '92000' },
-    { place: 'Chiangmai', code: '50000' },
-    { place: 'Khonkaen', code: '40000' },
-    { place: 'Chonburi', code: '20000' },
+    { place: 'Hatyai', code: '90110', pic: require("../img/hatyai.jpg") },
+    { place: 'Trang', code: '92000', pic: require("../img/trang.jpg") },
+    { place: 'Chiangmai', code: '50000', pic: require("../img/chiangmai.jpg") },
+    { place: 'Khonkaen', code: '40000', pic: require("../img/khonkean.jpg") },
+    { place: 'Chonburi', code: '20000', pic: require("../img/chonburi.jpg") },
 ]
 
-const con_me = [
-    { name_me: 'Hatyai', Tel: '0950853773' },
-]
+const Contact_me = (navigation) =>{
+    navigation.navigate('Contact')
+}
 
-const ZipItem = ({place, code, navigation}) => (
+const ZipItem = ({place, code, pic, navigation}) => (
     <TouchableHighlight onPress={() => (
         navigation.navigate('Weather', {zipCode: code})
     )}>
         <View style={styles.zipItem}>
-            <Text>{place}</Text>
-            <Text>{code}</Text>
-        </View>
-    </TouchableHighlight>
-)
-
-const Contact = ({name_me, Tel, navigation}) => (
-    <TouchableHighlight onPress={() => (
-        navigation.navigate('contact')
-    )}>
-        <View style={styles.conItem}>
-            <Text>{name_me}</Text>
-            <Text>{Tel}</Text>
+            <ImageBackground source={pic} style={styles.backdrop}>
+                <Text style = {styles.txt}>{place}</Text>
+                <Text style = {styles.txt}>{code}</Text>
+            </ImageBackground>
         </View>
     </TouchableHighlight>
 )
@@ -40,18 +33,14 @@ const Contact = ({name_me, Tel, navigation}) => (
 export default function zipCodeScreen() {
     const navigation = useNavigation()
     return (
-        <View>
+        <View style={styles.container}>
             <FlatList
                 data = {availableZipItems} 
                 keyExtractor = {item => item.code} 
                 renderItem = {({item}) => <ZipItem {...item} navigation={navigation}/>}
             />
-            <View>
-            <FlatList
-                data = {con_me} 
-                keyExtractor = {item => item.code} 
-                renderItem = {({item}) => <ZipItem {...item} navigation={navigation}/>}
-            />
+            <View style={styles.buttonContainer}>
+                <Button title = "Contact Me" color = "orange" onPress = {() => Linking.openURL("https://github.com/6110110311/3SA04")}></Button>
             </View>
         </View>
         
@@ -62,7 +51,7 @@ const styles = StyleSheet.create({
     zipItem: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
     },
     zipPlace: {
         flex: 1,
@@ -70,7 +59,29 @@ const styles = StyleSheet.create({
     zipCode: {
         flex: 1,
     },
-    conItem: {
-        flex : 1,
+    con: {
+        top: 20,
+        flexDirection: 'row-reverse',
+        justifyContent: 'center',
+        alignItems: 'flex-end'
+    },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+    buttonContainer: {
+        margin: 20
+    },
+    backdrop: {
+        justifyContent: 'center',
+        flexDirection: "column",
+        alignItems: "center",
+        width: 415,
+        height: 100,
+        padding: 55,
+    },
+    txt: {
+        color: 'white',
+        fontSize: 20,
     }
 })
