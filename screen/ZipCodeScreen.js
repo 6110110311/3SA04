@@ -42,8 +42,7 @@ export default function zipCodeScreen() {
             <FlatList
                 data = {availableZipItems} 
                 keyExtractor = {item => item.code} 
-                renderItem = {({item}) => <ZipItem {...item} navigation={navigation} 
-                numColumns = {3}/>}
+                renderItem = {({item}) => <ZipItem {...item} navigation={navigation}/>}
             />
             <View style={styles.buttonContainer}>
                 <Button title = "Contact Me" color = "orange" onPress = {() => Linking.openURL("https://github.com/6110110311/3SA04")}></Button>
@@ -89,5 +88,6 @@ const styles = StyleSheet.create({
     txt: {
         color: 'white',
         fontSize: 20,
+        fontWeight: 'bold',
     }
 })
